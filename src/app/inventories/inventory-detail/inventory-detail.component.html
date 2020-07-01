@@ -1,0 +1,25 @@
+
+<div *ngIf="inventory">
+    <div class="row">
+        <div class="col-xs-12">
+            <img [src]="inventory.imagePath" alt="" class="img-responsive" style="max-height: 300px;">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 class="text-center">{{inventory.name}} ( {{inventory.amount | currency:'USD'}})</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <p class="text-center">{{inventory.description}}</p>
+        </div>
+    </div>
+    <div class="row" style="text-align: center;">
+        <div class="col-xs-12">
+            <button type="button" class="btn btn-primary" (click)="onEditInventory()">Edit Inventory</button> | 
+            <button type="button" class="btn btn-danger"  (click)="onDeleteInventory()">Delete Inventory</button>
+            
+        </div>
+    </div>
+</div>

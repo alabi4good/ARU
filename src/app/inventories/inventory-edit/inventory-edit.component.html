@@ -1,0 +1,84 @@
+<div class="row">
+    <div class="col-xs-12">
+        <form [formGroup]="inventoryForm" (ngSubmit)="onSubmit()">
+            
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text"
+                        class="form-control"
+                        id="name"
+                        formControlName="name">
+                        <small class="text-danger" *ngIf="inventoryForm.get('name').invalid && 
+                inventoryForm.get('name').touched">Please enter inventory name!</small>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="name">Amount:</label>
+                        <input type="number"
+                        class="form-control"
+                        id="amount"
+                        formControlName="amount">
+                        <div *ngIf="inventoryForm.get('amount').invalid && 
+                        inventoryForm.get('amount').touched">
+                        <small class="text-danger" *ngIf="inventoryForm.get('amount').errors?.required">
+                        Amount is required!
+                        </small>
+                        <small class="text-danger" *ngIf="inventoryForm.get('amount').errors.lessThanOne">
+                        Can not enter any amount less than 1!
+                        </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="ImagePath">Image URL:</label>
+                        <input type="text"
+                        class="form-control"
+                        id="imagePath"
+                        formControlName="imagePath">
+                        <small class="text-danger" *ngIf="inventoryForm.get('imagePath').invalid && 
+                        inventoryForm.get('imagePath').touched">Please enter inventory image URL!</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <img [src]="inventoryForm.value.imagePath" class="img-responsive">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <textarea type="text"
+                        class="form-control"
+                        id="description" rows="6"
+                        formControlName="description"></textarea>
+                        <small class="text-danger" *ngIf="inventoryForm.get('description').invalid && 
+                        inventoryForm.get('description').touched">Please enter inventory description!</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <button class="btn btn-success" type="submit" [disabled]="!inventoryForm.valid">Add Inventory</button> | 
+                    <button class="btn btn-danger" type="button"
+                    (click)="onCancel()">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

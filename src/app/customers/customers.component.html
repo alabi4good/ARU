@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-md-6">
+        <app-customer-edit></app-customer-edit>
+        <hr>
+        <h3 class="text-center">Customers List</h3>
+        <ul class="list-group">
+            <li class="list-group-item"  *ngFor="let customer of customers; let i = index">
+               
+                <span style="cursor: pointer" (click)="onEditCustomer(i)">
+                    {{customer.name}}( {{customer.phone}})<br>
+                    <span>{{customer.email}}</span>                       
+                </span>
+                <span class="pull-right">
+                    <a class="btn btn-primary btn-xs" [routerLink]="[i]">Buy Inventory</a> | 
+                    <a class="btn btn-success btn-xs" [routerLink]="[i, 'purchasehistory']">View Purchase History</a>
+                </span>               
+                
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-md-6">
+        <router-outlet></router-outlet>
+    </div>
+</div>

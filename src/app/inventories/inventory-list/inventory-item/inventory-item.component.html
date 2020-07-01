@@ -1,0 +1,17 @@
+<a 
+[routerLink]="[index]" 
+style="cursor: pointer; margin-bottom: 20px;" 
+class="list-group-item clearfix" 
+routerLinkActive="active">
+    <div class="pull-left">
+        <h4 class="list-group-item-heading">{{inventory.name}} ({{inventory.amount | currency:'USD'}})</h4>
+        <p class="list-group-item-text">{{inventory.description}}</p>
+    </div>
+    <span class="pull-right">
+        <img
+         [src]="inventory.imagePath" 
+         alt="{{inventory.name}}" 
+         class="img-responsive" 
+         style="max-height:50px;">
+    </span>
+</a>

@@ -1,0 +1,11 @@
+<div class="row">
+    <div class="col-xs-12">       
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let inventory of inventories; let i = index">
+                {{inventory.name}} | {{inventory.amount | currency: 'USD'}} 
+                <span class="pull-right label label-primary" 
+                style="cursor: pointer;" (click)="onPurchase(i)">Buy Item</span>               
+            </li>
+        </ul>
+    </div>
+</div>
