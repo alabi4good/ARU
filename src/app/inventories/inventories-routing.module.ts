@@ -13,7 +13,7 @@ const routes: Routes = [
     {
         path: '',
         component: InventoriesComponent,
-        // canActivate:[AuthGuard],
+        resolve: [InventoryResolverService],
         children:[
           { 
             path: '', 
@@ -26,12 +26,12 @@ const routes: Routes = [
           { 
             path: ':id', 
             component: InventoryDetailComponent,
-            resolve: [InventoryResolverService] //using resolver to load data from API and get data ready before the component is ready
+            //resolve: [InventoryResolverService] //using resolver to load data from API and get data ready before the component is ready
           },
           { 
             path: ':id/edit', 
             component: InventoryEditComponent, 
-            resolve: [InventoryResolverService]//using resolver to load data from API and get data ready before the component is ready
+            //resolve: [InventoryResolverService]//using resolver to load data from API and get data ready before the component is ready
           }
         ]
     }

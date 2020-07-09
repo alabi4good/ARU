@@ -22,7 +22,7 @@ subscription: Subscription;
 
   ngOnInit() {
     
-    this.dataStorageService.fetchInventories().subscribe();
+    //this.dataStorageService.fetchInventories().subscribe();
     this.inventories = this.inventoryService.getInventories();
 
    this.subscription = this.inventoryService.inventoryChanged

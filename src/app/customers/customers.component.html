@@ -8,7 +8,8 @@
                
                 <span style="cursor: pointer" (click)="onEditCustomer(i)">
                     {{customer.name}}( {{customer.phone}})<br>
-                    <span>{{customer.email}}</span>                       
+                    <span>{{customer.email}}</span> <br>
+                    <span class="btn btn-danger btn-xs">edit</span>
                 </span>
                 <span class="pull-right">
                     <a class="btn btn-primary btn-xs" [routerLink]="[i]">Buy Inventory</a> | 

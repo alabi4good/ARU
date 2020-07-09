@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataStorageService } from '../shared/data-storage.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -24,15 +25,6 @@ collapsed = true;
     this.dataStorageService.postCustomers();
   }
 
-  //fetch Iventories
-  onFetchInventories(){
-    this.dataStorageService.fetchInventories().subscribe();
-  }
-
-  //fetch Customers
-  onFetchCustomers(){
-    this.dataStorageService.fetchCustomers();
-  }
 
 }
 

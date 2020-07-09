@@ -18,8 +18,7 @@ subscription: Subscription;
     private router: Router) { }
 
   ngOnInit() {
-
-    this.dataStorageService.fetchCustomers();
+    
     this.customers = this.customerService.getCustomers();
   
     //keep the customers component updated of any changes that occur in the customer-edit

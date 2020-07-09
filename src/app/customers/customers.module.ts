@@ -7,12 +7,14 @@ import { CustomerEditComponent } from './customer-edit/customer-edit.component';
 import { CustomersComponent } from './customers.component';
 import { BuyInventoryComponent } from './buy-inventory/buy-inventory.component';
 import { PurchaseHistoryComponent } from './purchase-history/purchase-history.component';
+import { CustomerResolverService } from './customers-resolver.service';
 
 
 const routes: Routes = [
     {
         path: '',
         component: CustomersComponent,
+        resolve: [CustomerResolverService],
         children: [
             {
                 path: ':id',

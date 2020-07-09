@@ -4,7 +4,7 @@ import { Inventory } from '../inventories/inventory.model';
 import { HttpClient } from '@angular/common/http';
 import { Customers } from '../customers/customer.model';
 import { CustomersService } from '../customers/customers.service';
-import { map, tap } from 'rxjs/operators';
+import { map, tap, shareReplay } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
@@ -52,7 +52,9 @@ export class DataStorageService{
     //fetch inventories from database
     fetchInventories(){
         return this.http.get<Inventory[]>('https://arus-f1963.firebaseio.com/inventories.json')
-        .pipe(tap(inventories =>{
+        .pipe(
+            shareReplay(),
+            tap(inventories =>{
             if(inventories){
                 this.inventoryService.getInventoriesFromDatabase(inventories);
             }else{
@@ -63,13 +65,18 @@ export class DataStorageService{
 
     fetchCustomers(){
         return this.http.get<Customers[]>('https://arus-f1963.firebaseio.com/customers.json')
-        .subscribe(customers => {
-            if(customers){
-                this.customerService.getCustomersFromDatabase(customers);
-            }else{
-                alert('No Inventories');
-            }
-            
-        })
+        .pipe(
+            shareReplay(),
+            tap(
+                customers =>{
+                    if(customers){
+                        this.customerService.getCustomersFromDatabase(customers);
+                    }else{
+                        alert('No Inventories');
+                    }
+                }
+            )
+        )
+        
     }
 }
